@@ -5,7 +5,7 @@ import datetime
 from sortingHat.helpers.auth import API
 from sortingHat.helpers.follower import Follower
 from sortingHat.helpers.search import Search
-from sortingHat.helpers.personalize import WeekDayAware
+from reppinTheseTeas.helpers.TeaAdvertiser import TeaAdvertiser
 from sortingHat.models import User, TrainingData
 from sklearn import tree
 
@@ -33,6 +33,7 @@ def main():
         searcher = Search(TWITTER_BOT)
         followers = Follower(TWITTER_BOT)
         classifier = tree.DecisionTreeClassifier()
+        advertiser = TeaAdvertiser(TWITTER_BOT)
         #wda = WeekDayAware()
 
         #### check to see if theres a new follower to follow
@@ -120,30 +121,10 @@ def main():
                 print(datetime.datetime.now())
                 continue
 
-        ####
-        # advertise individual twice a week
-        ####
-        # adv, adv_followup = wda.buy_individual_status()
-        # if adv and adv_followup and not ind_adv:
-        #     try:
-        #         TWITTER_BOT.update_status(status=adv)
-        #         print('advertised individual')
-        #     except tweepy.TweepError as e:
-        #         print(e)
-        #         print("failure to tweet individual advertisement")
-        #         print(datetime.datetime.now())
-        #     try:
-        #         TWITTER_BOT.update_status(status=adv_followup)
-        #     except tweepy.TweepError as e:
-        #         print(e)
-        #         print("failure to tweet individual advertisment followup")
-        #         print(datetime.datetime.now())
-        #     #did this once already
-        #     ind_adv = True
-        # #change flag back on non adv days
-        # if (wda.today_int % 3) != 0:
-        #     ind_adv = False
+        #advertise
 
+        advertiser.advertise_this_months()
+        advertiser.advertise_last_months()
 
         ##follow friday shout-outs,
         # if its friday,
