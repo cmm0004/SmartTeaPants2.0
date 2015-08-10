@@ -87,9 +87,9 @@ def main():
                 if newFollower.classification == '0' or newFollower.classification == '2':
                     followers.mention_new_follower()
                ## if it was a blogger or individual, tweet at them!
-                else:
-                    print(most_recent_user_object.screen_name + ' is a ' + newFollower.classification + ' , did not mention or follow')
-            
+                elif newFollower.classification == '1':
+                    #steal followers
+                    followers.poach_followers(newFollower.user.screen_name, 20)
         ##if the user was a dupe, we've already done this.
         else: 
             print('already following most recent')

@@ -77,7 +77,8 @@ class Follower(object):
             try:
                 self.TWITTER_BOT.create_friendship(screen_name=follower.screen_name)
                 print("followed new follower " + str(follower.screen_name), datetime.datetime.now())
-            except tweepy.TweepError:
+            except tweepy.TweepError as e:
+                print(e)
                 print('error, didn\'t follow ' + str(follower.screen_name), datetime.datetime.now())
     
     def _check_name_nsfw(self):
