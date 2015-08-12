@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'sortingHat',
     'reppinTheseTeas',
     'keepingItReal',
+    'library',
 )
 
 MIDDLEWARE_CLASSES = (

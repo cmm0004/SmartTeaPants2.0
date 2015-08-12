@@ -9,3 +9,6 @@ reppinTheseTeas/migrations/__pycache__/
 keepingItReal/__pycache__/
 keepingItReal/migrations/__pycache__/
 keepingItReal/exporters/__pycache__/
+keepingItReal/importers/__pycache__/
+library/__pycache__/
+library/migrations/__pycache__/
